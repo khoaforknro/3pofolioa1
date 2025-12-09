@@ -19,7 +19,7 @@
     body.loaded { opacity: 1; }
 
     a { text-decoration: none; color: inherit; }
-    img { pointer-events: none; }
+    img, video { pointer-events: none; }
 
     .page {
       max-width: 1250px;
@@ -106,23 +106,22 @@
 
     .nav-item:hover::after { width: 100%; }
 
-    /* ✅ BOX */
+    /* ✅ VIDEO SECTION */
     .video-section {
       background-color: #fff;
       border-radius: 24px;
-      padding: 60px 32px;
+      padding: 40px 32px;
       box-shadow: 0 24px 60px rgba(56,189,248,0.18);
       border: 1px solid rgba(56,189,248,0.2);
-      text-align: center;
     }
 
-    /* ✅ ARGB TITLE */
-    .video-title {
-      font-size: 44px;
+    /* ✅ TITLE ARGB */
+    .section-title {
+      font-size: 38px;
       font-weight: 800;
-      letter-spacing: 6px;
+      letter-spacing: 5px;
       text-transform: uppercase;
-      margin-bottom: 40px;
+      margin-bottom: 25px;
       background: linear-gradient(
         90deg,
         rgba(0,255,255,1),
@@ -142,48 +141,57 @@
       100% { background-position: 300%; }
     }
 
-    /* ✅ TYPING + FADE EFFECT */
-    .coming-soon {
-      font-size: 32px;
-      font-weight: 700;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: #0ea5e9;
-      opacity: 0;
-      animation: typing 2.5s steps(12) forwards,
-                 fadeout 1.5s 3s forwards,
-                 loop 5s infinite;
-      white-space: nowrap;
-      display: inline-block;
+    /* ✅ TOP VIDEO GRID (2 VIDEO NGANG) */
+    .video-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 50px;
     }
 
-    @keyframes typing {
-      from { width: 0; opacity: 1; }
-      to { width: 12ch; opacity: 1; }
+    .video-box {
+      width: 100%;
+      height: 260px;
+      background-color: #dbeafe;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 12px 28px rgba(56,189,248,0.25);
     }
 
-    @keyframes fadeout {
-      from { opacity: 1; }
-      to { opacity: 0; }
+    .video-box video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
-    @keyframes loop {
-      0% { opacity: 0; }
-      10% { opacity: 1; }
-      80% { opacity: 0; }
-      100% { opacity: 0; }
+    /* ✅ HIGHLIGHT EMBED */
+    .highlight-box {
+      width: 100%;
+      height: 420px;
+      background-color: #dbeafe;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 12px 28px rgba(56,189,248,0.25);
+    }
+
+    .highlight-box iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
     }
 
     @media (max-width: 900px) {
       .header { flex-direction: column; align-items: flex-start; }
-      .video-title { font-size: 36px; }
-      .coming-soon { font-size: 26px; }
+      .video-grid { grid-template-columns: 1fr; }
+      .video-box { height: 220px; }
+      .highlight-box { height: 360px; }
     }
 
     @media (max-width: 600px) {
       .page { padding: 30px 20px; }
-      .video-title { font-size: 30px; }
-      .coming-soon { font-size: 22px; }
+      .section-title { font-size: 30px; }
+      .video-box { height: 200px; }
+      .highlight-box { height: 300px; }
     }
   </style>
 </head>
@@ -229,11 +237,33 @@
     </nav>
   </header>
 
-  <!-- ✅ VIDEO BOX -->
+  <!-- ✅ VIDEO SECTION -->
   <section class="video-section">
-    <div class="video-title">VIDEOS</div>
 
-    <div class="coming-soon">COMING SOON...</div>
+    <!-- ✅ PHẦN TRÊN: VIDEO NGUỒN KHÁC -->
+    <div class="section-title">VIDEO NGUỒN KHÁC</div>
+
+    <div class="video-grid">
+      <div class="video-box">
+        <video controls>
+          <source src="your-video-1.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="video-box">
+        <video controls>
+          <source src="your-video-2.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+
+    <!-- ✅ PHẦN DƯỚI: VIDEO HIGHLIGHT -->
+    <div class="section-title">VIDEO HIGHLIGHT</div>
+
+    <div class="highlight-box">
+      <iframe src="" allowfullscreen></iframe>
+    </div>
+
   </section>
 
 </div>
